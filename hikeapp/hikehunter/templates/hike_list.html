@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hunt the Hike</title>
+    <style>
+
+    .fill {
+    margin:0;
+    padding:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+    }
+    .fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+    }
+
+    </style>
+</head>
+<body>
+{% extends "base.html" %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content">
+<div class="modal-body row">
+  <div class="col-md-6">
+    <div class="fill">
+    <img style="background-image: url(media/media/hiking-bg-image.jpg"); src="media/media/hiking-bg-image.jpg">
+</div>
+  </div>
+  <div class="col-md-6">
+    <h1>Hunt the perfect hike for yourself</h1>
+
+<form method="get">
+    {{ filter.form|crispy }}
+    <button type="submit" class="btn btn-primary">Hunt!</button>
+</form>
+    </br>
+<ul>
+    {% for item in filter.qs %}
+    <li>
+        <a href="{% url 'hike_detail' item.pk %}">{{ item.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+{% endblock %}
+  </div>
+</div>
+
+
+
+</body>
+</html>

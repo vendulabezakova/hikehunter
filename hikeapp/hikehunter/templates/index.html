@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hikeapp</title>
+    <style>
+
+    .hp-button {
+        text-align: center;
+        padding-top: 15%;
+        }
+
+    body {
+        background-image: url("media/media/hiking-bg-image.jpg");
+        background-repeat: no-repeat;
+        background-size: auto;
+        margin:0px;
+        text-align:center;
+    }
+
+    h1 {
+    text-shadow: 2px 2px 18px #46534f;
+    }
+
+    #container {
+      color:white;
+      text-transform: uppercase;
+      font-size:36px;
+      font-weight:bold;
+      padding-top:100px;
+      width:100%;
+      display:block;
+      text-align:center;
+    }
+
+    #flip {
+      height:60px;
+      overflow:hidden;
+    }
+
+    #flip > div > div {
+      color:#fff;
+      padding:4px 12px;
+      height:55px;
+      margin-bottom:45px;
+      display:inline-block;
+    }
+
+    #flip div:first-child {
+      animation: show 5s linear infinite;
+    }
+
+    #flip div div {
+      background:#709376;
+    }
+    #flip div:first-child div {
+      background:#53541d;
+    }
+    #flip div:last-child div {
+      background:#34565e;
+    }
+
+    @keyframes show {
+      0% {margin-top:-270px;}
+      5% {margin-top:-180px;}
+      33% {margin-top:-180px;}
+      38% {margin-top:-90px;}
+      66% {margin-top:-90px;}
+      71% {margin-top:0px;}
+      99.99% {margin-top:0px;}
+      100% {margin-top:-270px;}
+    }
+
+
+
+    </style>
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+
+<div class="content">
+    <div id=container>
+        <h1 style="font-size:50px">Hunt your perfect</h1>
+      <div id=flip>
+        <div><div>hike</div></div>
+        <div><div>experience</div></div>
+        <div><div>adventure</div></div>
+      </div>
+    </div>
+
+    <div class="container"; style="padding:50px;">
+        <div class="row justify-content-around">
+                <div class="col-4"; style="text-align:center">
+                    <a href="{% url 'hike_list' %}" class="btn btn-primary btn-lg btn-block" role="button">Hunt the Hike</a>
+                </div>
+                <div class="col-4"; style="text-align:center">
+                    <a href="{% url 'create_hike' %}" class="btn btn-primary btn-lg btn-block" role="button">Create the Hike</a>
+                </div>
+        </div>
+</div>
+{% endblock %}
+</body>
+</html>
